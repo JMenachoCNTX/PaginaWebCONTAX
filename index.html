@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CONTAX — Contabilidad e Impuestos</title>
+<meta name="description" content="CONTAX, tu consultora contable 100% virtual en Santa Cruz, Bolivia. Declaraciones mensuales, impuestos, trámites y asesoramiento para repartidores y pequeñas empresas.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#14273f;
+    --navy-2:#1f3a5f;
+    --slate:#51617a;
+    --gray:#8a97a8;
+    --light:#f4f6f9;
+    --line:#e3e8ef;
+    --white:#ffffff;
+    --wa:#25d366;
+    --maxw:1140px;
+    --font:'Century Gothic','Jost','Questrial',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font);color:var(--navy);background:var(--white);line-height:1.6;font-weight:400}
+  h1,h2,h3{line-height:1.2;font-weight:600;letter-spacing:.3px}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+  section{padding:72px 0}
+  .eyebrow{text-transform:uppercase;letter-spacing:2px;font-size:.78rem;color:var(--slate);font-weight:600;margin-bottom:12px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:40px;font-weight:600;font-size:.95rem;transition:.2s;cursor:pointer;border:2px solid transparent}
+  .btn-primary{background:var(--navy);color:#fff}
+  .btn-primary:hover{background:var(--navy-2)}
+  .btn-ghost{border-color:var(--navy);color:var(--navy);background:transparent}
+  .btn-ghost:hover{background:var(--navy);color:#fff}
+  .btn-wa{background:var(--wa);color:#fff}
+  .btn-wa:hover{filter:brightness(.93)}
+
+  /* NAV */
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:70px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.45rem;letter-spacing:1px;color:var(--navy)}
+  .logo svg{width:34px;height:34px}
+  .nav-links{display:flex;align-items:center;gap:30px}
+  .nav-links a{font-size:.95rem;font-weight:500;color:var(--slate)}
+  .nav-links a:hover{color:var(--navy)}
+  .nav-links .btn{color:#fff}
+  .menu-btn{display:none;background:none;border:0;cursor:pointer;color:var(--navy)}
+
+  /* HERO */
+  .hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-2) 100%);color:#fff;padding:90px 0 100px}
+  .hero .eyebrow{color:#9fb4d4}
+  .hero h1{font-size:2.9rem;margin-bottom:20px;font-weight:700}
+  .hero p{font-size:1.15rem;color:#d4def0;max-width:620px;margin-bottom:34px}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+  .hero .btn-ghost{border-color:#fff;color:#fff}
+  .hero .btn-ghost:hover{background:#fff;color:var(--navy)}
+
+  /* STRIP */
+  .strip{background:var(--light);border-bottom:1px solid var(--line)}
+  .strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding-top:30px;padding-bottom:30px}
+  .strip-item{text-align:center}
+  .strip-item .n{font-size:1.05rem;font-weight:600;color:var(--navy)}
+  .strip-item .d{font-size:.85rem;color:var(--slate)}
+
+  /* GENERIC SECTION HEAD */
+  .head{text-align:center;max-width:680px;margin:0 auto 50px}
+  .head h2{font-size:2.1rem;margin-bottom:14px}
+  .head p{color:var(--slate)}
+
+  /* CARDS */
+  .grid{display:grid;gap:24px}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  .card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:30px}
+  .card:hover{box-shadow:0 10px 30px rgba(20,39,63,.08);transform:translateY(-3px);transition:.25s}
+  .card .ic{width:48px;height:48px;border-radius:12px;background:var(--light);display:flex;align-items:center;justify-content:center;margin-bottom:18px;color:var(--navy)}
+  .card h3{font-size:1.15rem;margin-bottom:10px}
+  .card p{font-size:.93rem;color:var(--slate)}
+
+  /* SERVICES BG */
+  .bg-light{background:var(--light)}
+
+  /* PLANS */
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start}
+  .plan{background:#fff;border:1px solid var(--line);border-radius:18px;padding:34px 28px;position:relative}
+  .plan.featured{border:2px solid var(--navy);box-shadow:0 14px 40px rgba(20,39,63,.12)}
+  .plan .badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;font-size:.72rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;padding:5px 16px;border-radius:30px}
+  .plan h3{font-size:1.3rem;margin-bottom:4px}
+  .plan .price{font-size:2.1rem;font-weight:700;color:var(--navy);margin:8px 0 2px}
+  .plan .price small{font-size:.9rem;font-weight:500;color:var(--slate)}
+  .plan ul{list-style:none;margin:22px 0;padding:0}
+  .plan li{font-size:.9rem;color:var(--slate);padding:9px 0 9px 26px;position:relative;border-top:1px solid var(--line)}
+  .plan li:before{content:"✓";position:absolute;left:0;color:var(--navy);font-weight:700}
+  .plan .btn{width:100%;justify-content:center}
+
+  .note{text-align:center;color:var(--gray);font-size:.85rem;margin-top:26px}
+
+  /* DELIVERY CALLOUT */
+  .callout{background:var(--navy);color:#fff;border-radius:20px;padding:46px;text-align:center}
+  .callout h2{font-size:1.9rem;margin-bottom:12px}
+  .callout p{color:#d4def0;max-width:620px;margin:0 auto 26px}
+  .callout .btn-wa{background:var(--wa)}
+
+  /* CONTACT */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+  .contact-list{list-style:none}
+  .contact-list li{display:flex;gap:14px;padding:16px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+  .contact-list .ic{color:var(--navy);flex-shrink:0;margin-top:3px}
+  .contact-list .lbl{font-size:.78rem;text-transform:uppercase;letter-spacing:1px;color:var(--gray)}
+  .contact-list .val{font-weight:500}
+  .map{border-radius:16px;overflow:hidden;border:1px solid var(--line);height:360px}
+  .map iframe{width:100%;height:100%;border:0}
+  .socials{display:flex;gap:14px;margin-top:22px}
+  .socials a{width:44px;height:44px;border-radius:50%;background:var(--light);display:flex;align-items:center;justify-content:center;color:var(--navy);transition:.2s}
+  .socials a:hover{background:var(--navy);color:#fff}
+
+  /* FOOTER */
+  footer{background:var(--navy);color:#b9c6da;padding:40px 0;text-align:center;font-size:.9rem}
+  footer .logo{color:#fff;justify-content:center;margin-bottom:12px}
+  footer a{color:#fff;font-weight:500}
+
+  /* FLOATING WA */
+  .fab{position:fixed;right:20px;bottom:20px;width:58px;height:58px;border-radius:50%;background:var(--wa);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 20px rgba(0,0,0,.25);z-index:60}
+  .fab:hover{filter:brightness(.93)}
+
+  /* RESPONSIVE */
+  @media(max-width:860px){
+    .hero h1{font-size:2.1rem}
+    .strip .wrap{grid-template-columns:repeat(2,1fr)}
+    .g3,.g4,.plans,.contact-grid{grid-template-columns:1fr}
+    .nav-links{display:none;position:absolute;top:70px;left:0;right:0;background:#fff;flex-direction:column;padding:20px;gap:16px;border-bottom:1px solid var(--line)}
+    .nav-links.open{display:flex}
+    .menu-btn{display:block}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header>
+  <div class="wrap nav">
+    <a href="#inicio" class="logo">
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 2 L35 11 V29 L20 38 L5 29 V11 Z" fill="#14273f"/>
+        <path d="M20 9 L28 14 V24 L20 29 L12 24 V14 Z" fill="#8a97a8"/>
+      </svg>
+      CONTAX
+    </a>
+    <button class="menu-btn" onclick="document.getElementById('nav').classList.toggle('open')" aria-label="Menú">
+      <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 8h20M4 14h20M4 20h20"/></svg>
+    </button>
+    <nav class="nav-links" id="nav">
+      <a href="#beneficios">Beneficios</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#planes">Planes</a>
+      <a href="#contacto">Contacto</a>
+      <a class="btn btn-primary" href="https://wa.me/59169021969" target="_blank" rel="noopener">WhatsApp</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <p class="eyebrow">Contabilidad e Impuestos · Santa Cruz, Bolivia</p>
+    <h1>Tu contabilidad, donde estés.</h1>
+    <p>En CONTAX ofrecemos atención 100% virtual. Solicita tus declaraciones mensuales y balances con un solo mensaje, desde donde estés. Nosotros nos encargamos del resto. 📲</p>
+    <div class="hero-ctas">
+      <a class="btn btn-wa" href="https://wa.me/59169021969" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+      <a class="btn btn-ghost" href="#planes">Ver planes y tarifas</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STRIP ============ -->
+<div class="strip">
+  <div class="wrap">
+    <div class="strip-item"><div class="n">100% Virtual</div><div class="d">Atención a distancia</div></div>
+    <div class="strip-item"><div class="n">Buzón 24/7</div><div class="d">Deja tus facturas a cualquier hora</div></div>
+    <div class="strip-item"><div class="n">Desde Bs. 30</div><div class="d">Tarifas accesibles</div></div>
+    <div class="strip-item"><div class="n">Respuesta rápida</div><div class="d">Hasta en 24 hrs hábiles</div></div>
+  </div>
+</div>
+
+<!-- ============ BENEFICIOS ============ -->
+<section id="beneficios">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Beneficios de elegir CONTAX</p>
+      <h2>Tu contabilidad en buenas manos</h2>
+      <p>Resolvemos tus impuestos de forma simple, rápida y a bajo costo, para que te olvides de multas y preocupaciones.</p>
+    </div>
+    <div class="grid g4">
+      <div class="card">
+        <div class="ic"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div>
+        <h3>Atención 100% virtual</h3>
+        <p>Solicita todos nuestros servicios desde la comodidad de tu hogar y recibe tu documentación en digital.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v6M12 22v-6M2 12h6M22 12h-6"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3>Declaraciones a un click</h3>
+        <p>Te enviamos tus declaraciones y respaldos para que accedas a tu información cuando y donde quieras.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 10h18M5 10V6a2 2 0 012-2h10a2 2 0 012 2v4M5 10v8a2 2 0 002 2h10a2 2 0 002-2v-8"/></svg></div>
+        <h3>Buzón habilitado 24/7</h3>
+        <p>¿Tienes facturas en físico? Déjalas en nuestro buzón a cualquier hora: sábado, domingo o feriado.</p>
+      </div>
+      <div class="card">
+        <div class="ic"><svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div>
+        <h3>Rápido y a bajo costo</h3>
+        <p>Deja tus declaraciones mensuales en manos de expertos, con las mejores tarifas del mercado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICIOS ============ -->
+<section id="servicios" class="bg-light">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Conoce nuestros servicios</p>
+      <h2>Servicios pensados para ti</h2>
+      <p>Una variedad de servicios contables y tributarios con asesoramiento constante y las mejores tarifas.</p>
+    </div>
+    <div class="grid g3">
+      <div class="card">
+        <h3>Declaraciones mensuales</h3>
+        <p>Registro de Compras y Ventas (RCV), Formulario 200 (IVA) y Formulario 400 (IT), gestionados por nosotros.</p>
+      </div>
+      <div class="card">
+        <h3>Boletas y QR de pago</h3>
+        <p>Generamos tus boletas y el código QR para el pago de impuestos, listos para cancelar sin complicaciones.</p>
+      </div>
+      <div class="card">
+        <h3>Estados Financieros</h3>
+        <p>Elaboramos tu Balance General, Estado de Resultados y más, cada gestión y según tu actividad.</p>
+      </div>
+      <div class="card">
+        <h3>Trámites NIT, Matrícula y ROE</h3>
+        <p>Apertura de NIT, Matrícula de Comercio y ROE para repartidores de PedidosYa, Yango Deli y TADA.</p>
+      </div>
+      <div class="card">
+        <h3>Servicios para delivery</h3>
+        <p>Gestionamos la habilitación de tus pagos semanales en PedidosYa y Yango para evitar retenciones.</p>
+      </div>
+      <div class="card">
+        <h3>Asesoramiento en línea</h3>
+        <p>Resolvemos cualquier duda contable o tributaria que tengas, de forma constante y personalizada.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PLANES ============ -->
+<section id="planes">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Planes y tarifas delivery</p>
+      <h2>Elige el plan que se adapta a ti</h2>
+      <p>Servicios adaptados a las necesidades de cada cliente, con mayor transparencia y detalle en cada proceso.</p>
+    </div>
+    <div class="plans">
+      <div class="plan">
+        <h3>Básico</h3>
+        <div class="price">Bs. 30 <small>/ mes</small></div>
+        <ul>
+          <li>Buzón 24/7 (recepción del 01 al 05)</li>
+          <li>Hasta 50 facturas</li>
+          <li>Declaraciones: RCV, F-200 (IVA), F-400 (IT)</li>
+          <li>Boleta o QR para pago de impuestos</li>
+          <li>Envío a PedidosYa / Yango</li>
+          <li>Entrega: hasta 72 hrs hábiles</li>
+        </ul>
+        <a class="btn btn-ghost" href="https://wa.me/59169021969" target="_blank" rel="noopener">Contratar</a>
+      </div>
+      <div class="plan featured">
+        <span class="badge">Más elegido</span>
+        <h3>Estándar</h3>
+        <div class="price">Bs. 50 <small>/ mes</small></div>
+        <ul>
+          <li>Buzón 24/7 (recepción del 01 al 05)</li>
+          <li>Hasta 100 facturas</li>
+          <li>Declaraciones: RCV, F-200 (IVA), F-400 (IT)</li>
+          <li>Boleta o QR para pago de impuestos</li>
+          <li>Respaldos en PDF + Excel del RCV</li>
+          <li>Resumen histórico mes a mes</li>
+          <li>Entrega: hasta 48 hrs hábiles</li>
+        </ul>
+        <a class="btn btn-primary" href="https://wa.me/59169021969" target="_blank" rel="noopener">Contratar</a>
+      </div>
+      <div class="plan">
+        <h3>Premium</h3>
+        <div class="price">Bs. 850 <small>/ año</small></div>
+        <ul>
+          <li>Buzón 24/7 (recepción del 01 al 05)</li>
+          <li>Facturas ilimitadas</li>
+          <li>Declaraciones: RCV, F-200 (IVA), F-400 (IT)</li>
+          <li>Respaldos en PDF + Excel del RCV</li>
+          <li>Resumen histórico mes a mes</li>
+          <li>Entrega: hasta 24 hrs hábiles</li>
+          <li>Asesoramiento contable y tributario</li>
+          <li>Estados Financieros incluidos</li>
+        </ul>
+        <a class="btn btn-ghost" href="https://wa.me/59169021969" target="_blank" rel="noopener">Contratar</a>
+      </div>
+    </div>
+    <p class="note">Para los planes mensuales se cancela una membresía única de Bs. 100 o la firma de un contrato de servicios por 6 meses.</p>
+  </div>
+</section>
+
+<!-- ============ CALLOUT DELIVERY ============ -->
+<section class="bg-light">
+  <div class="wrap">
+    <div class="callout">
+      <h2>¿Quieres empezar a trabajar como delivery?</h2>
+      <p>Realizamos tu apertura de NIT, Matrícula de Comercio y ROE sin costo de servicio: solo cancelas Bs. 130 a SEPREC por la Matrícula de Comercio. ¡Empieza hoy mismo!</p>
+      <a class="btn btn-wa" href="https://wa.me/59169021969" target="_blank" rel="noopener">Quiero más información</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section id="contacto">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow">Contáctanos</p>
+      <h2>Estamos para ayudarte</h2>
+      <p>Nuestra atención es 100% virtual, pero también puedes visitar nuestras oficinas agendando una cita previa.</p>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <ul class="contact-list">
+          <li>
+            <span class="ic"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M11 2C7 2 4 5 4 9c0 5 7 11 7 11s7-6 7-11c0-4-3-7-7-7z"/><circle cx="11" cy="9" r="2.5"/></svg></span>
+            <span><span class="lbl">Dirección</span><br><span class="val">6to Anillo, Av. Zero, Calle Zafiro S/N</span><br>Entre Av. El Palmar y Av. Bolivia · Santa Cruz de la Sierra</span>
+          </li>
+          <li>
+            <span class="ic"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h4l2 5-3 2a12 12 0 006 6l2-3 5 2v4a2 2 0 01-2 2A16 16 0 012 6a2 2 0 012-2z"/></svg></span>
+            <span><span class="lbl">WhatsApp</span><br><a class="val" href="https://wa.me/59169021969" target="_blank" rel="noopener">690-21969</a></span>
+          </li>
+          <li>
+            <span class="ic"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+            <span><span class="lbl">Correo</span><br><a class="val" href="mailto:info@contaxbolivia.com">info@contaxbolivia.com</a></span>
+          </li>
+          <li>
+            <span class="ic"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="9"/><path d="M2 11h18M11 2c3 3 3 15 0 18M11 2c-3 3-3 15 0 18"/></svg></span>
+            <span><span class="lbl">Sitio web</span><br><span class="val">www.contaxbolivia.com</span></span>
+          </li>
+        </ul>
+        <div class="socials">
+          <a href="https://www.facebook.com/profile.php?id=100091399181686" target="_blank" rel="noopener" aria-label="Facebook"><svg width="20" height="20" fill="currentColor"><path d="M12 10h2l.5-3H12V5.5c0-.9.3-1.5 1.6-1.5H15V1.3C14.7 1.2 13.8 1 12.7 1 10.4 1 9 2.3 9 5v2H6.5v3H9v8h3v-8z"/></svg></a>
+          <a href="https://vm.tiktok.com/ZMrjy3JAB/" target="_blank" rel="noopener" aria-label="TikTok"><svg width="20" height="20" fill="currentColor"><path d="M14 2c.3 1.9 1.4 3.3 3.2 3.5V8c-1.1 0-2.2-.4-3.2-1v6.3A5.3 5.3 0 1 1 9 8v2.4a2.9 2.9 0 1 0 2.6 2.9V2H14z"/></svg></a>
+        </div>
+      </div>
+      <div class="map">
+        <iframe loading="lazy" allowfullscreen src="https://maps.google.com/maps?q=-17.845882,-63.173464&z=16&output=embed" title="Ubicación CONTAX"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="logo">
+      <svg viewBox="0 0 40 40" width="28" height="28" fill="none"><path d="M20 2 L35 11 V29 L20 38 L5 29 V11 Z" fill="#fff"/><path d="M20 9 L28 14 V24 L20 29 L12 24 V14 Z" fill="#8a97a8"/></svg>
+      CONTAX
+    </div>
+    <p>Contabilidad e Impuestos · Santa Cruz de la Sierra, Bolivia</p>
+    <p style="margin-top:8px">© 2026 CONTAX · <a href="https://wa.me/59169021969" target="_blank" rel="noopener">Escríbenos por WhatsApp</a></p>
+  </div>
+</footer>
+
+<a class="fab" href="https://wa.me/59169021969" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg width="30" height="30" fill="currentColor"><path d="M15 3a12 12 0 00-10 18l-1 5 5-1A12 12 0 1015 3zm0 2a10 10 0 11-5 18.7l-.4-.2-3 .6.6-3-.2-.4A10 10 0 0115 5zm-4 4c-.3 0-.6.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3 2 3.2 5 4.4c2.5 1 3 .8 3.6.8.6-.1 1.8-.8 2-1.5.3-.7.3-1.3.2-1.4l-.9-.5s-1.4-.7-1.6-.8c-.2-.1-.4-.1-.6.1l-.8 1c-.2.2-.3.2-.6.1s-1.2-.5-2.3-1.4c-.8-.7-1.4-1.6-1.6-1.9s0-.4.1-.6l.5-.5c.1-.2.2-.3.3-.5s0-.4 0-.5l-.9-2.1c-.2-.5-.4-.5-.6-.5z"/></svg>
+</a>
+
+</body>
+</html>
